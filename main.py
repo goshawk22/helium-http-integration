@@ -16,9 +16,14 @@ app = FastAPI()
 async def root(info : Request):
     req_info = await info.json()
 
+    dev_name = req_info['name']
     # Save packet using current time
     time = datetime.datetime.now()
-    path = 'packets/' + str(time) + '.json'
+    folder = 'packets/' + str(dev_name)
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
+    path = 'packets/' + str(dev_name) + '/' + str(time) + '.json'
     with open(path, 'w+') as f:
         json.dump(req_info, f, indent=4)
 
