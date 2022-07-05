@@ -6,4 +6,9 @@ Each packet is saved to an individual json folder.
 
 To run the container on port 8000 of the host and saving packets to ./packets:
 
-`docker run -d --name helium-http-integration -p 8000:80 -v $(pwd)/packets:/workdir/packets goshawk22/helium-http-integration:latest`
+```
+docker run -d --name helium-http-integration \
+    -p 8000:80 \
+    -v $(pwd)/packets:/workdir/packets \
+    goshawk22/helium-http-integration:latest
+```
