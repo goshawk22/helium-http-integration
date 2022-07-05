@@ -15,10 +15,10 @@ app = FastAPI()
 @app.post("/")
 async def root(info : Request):
     req_info = await info.json()
-    date = date.now()
+    date_today = str(date.today())
     time = datetime.now()
 
-    date_path = 'packets/' + date + '/'
+    date_path = 'packets/' + date_today + '/'
     if not os.path.exists(date_path):
         os.makedirs(date_path)
 
